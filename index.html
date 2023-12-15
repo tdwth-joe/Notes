@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Notes Web Interface</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0; padding: 0; }
+        #chat-display { background-color: #fff; height: 500px; overflow-y: auto; margin: 10px; padding: 10px; border: 1px solid #ddd; }
+        #entry-box { width: calc(100% - 22px); padding: 10px; border: none; border-top: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <div id="chat-display"></div>
+    <input type="text" id="entry-box" placeholder="Enter your note here...">
+    <script>
+        const entryBox = document.getElementById('entry-box');
+        const chatDisplay = document.getElementById('chat-display');
+
+        entryBox.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && entryBox.value.trim() !== '') {
+                chatDisplay.innerHTML += `You: ${entryBox.value}<br>`;
+                entryBox.value = '';
+                chatDisplay.scrollTop = chatDisplay.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>
