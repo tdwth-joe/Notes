@@ -5,10 +5,10 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
   color: #000;
-  max-width: 100vw;
-  overflow: hidden;
+  overflow: hidden; /* Prevent scrolling on body */
 }
 
 #chat-display {
@@ -16,24 +16,21 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   background-color: #fff;
-  overflow-y: auto;
-  margin: 10px;
+  overflow-y: auto; /* Allow scrolling only in chat display */
+  margin: 0; /* Remove margin to fit screen */
   padding: 10px;
   border: 1px solid #ddd;
   font-family: 'Fira Code', monospace;
   flex-grow: 1;
-  max-height: calc(100vh - 60px); /* Adjusted for header/footer height */
-  overflow-x: hidden;
-  overscroll-behavior: contain;
+  max-height: calc(100vh - 60px); /* Adjust based on other elements' height */
   font-size: 18px;
-  touch-action: pan-y;
-  user-select: none;
 }
 
 .input-container {
   display: flex;
   align-items: center;
-  margin: 10px;
+  margin: 0 10px; /* Adjust margin */
+  padding: 5px 0; /* Add padding for visual comfort */
 }
 
 #entry-box {
@@ -52,14 +49,11 @@ body {
   background-color: #000;
   border: none;
   padding: 10px 15px;
-  margin-left: 10px;
   cursor: pointer;
   font-family: 'Fira Code', monospace;
   color: #fff;
   border-radius: 4px;
-  transition: background-color 0.2s ease;
   font-size: 18px;
-  max-width: 90px;
 }
 
 #enter-button:hover,
@@ -71,40 +65,32 @@ body {
   background-color: #000;
   border: none;
   padding: 10px 15px;
-  margin-left: 10px;
   cursor: pointer;
   font-family: 'Fira Code', monospace;
   color: #fff;
   border-radius: 4px;
-  transition: background-color 0.2s ease;
 }
 
 #menu-button:hover {
   background-color: #333;
 }
 
-/* Media queries for Pixel 8 Pro */
-@media (min-device-width: 1440px) and (min-device-height: 3120px) and (-webkit-device-pixel-ratio: 3) {
+@media (min-width: 1440px) and (min-height: 3120px) {
   body {
-    font-size: 20px;
+    font-size: 16px; /* Adjust for readability */
   }
 
   #chat-display {
-    margin: 15px;
     padding: 15px;
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .input-container {
-    margin: 15px;
+    padding: 10px 0;
   }
 
   #entry-box, #enter-button, .chat-button, #menu-button {
-    font-size: 20px;
+    font-size: 16px;
     padding: 12px 18px;
-  }
-
-  #enter-button, .chat-button, #menu-button {
-    max-width: 100px;
   }
 }
