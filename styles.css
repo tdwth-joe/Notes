@@ -20,7 +20,6 @@ body {
   border: 1px solid #ddd;
   font-family: 'Fira Code', monospace;
   flex-grow: 1;
-  /* Added CSS properties for mobile responsiveness */
   max-height: 80vh;
   overflow-x: hidden;
   overscroll-behavior: contain;
@@ -80,4 +79,26 @@ body {
 
 #menu-button:hover {
   background-color: #333;
+}
+
+/* Media queries for mobile devices */
+@media (max-width: 600px) {
+  #chat-display {
+    margin: 5px;
+    padding: 5px;
+    font-size: 16px;
+  }
+
+  .input-container {
+    margin: 5px;
+  }
+
+  #entry-box, #enter-button, .chat-button, #menu-button {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+
+  #enter-button, .chat-button, #menu-button {
+    max-width: 80px;
+  }
 }
