@@ -8,7 +8,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/Notes/",
+  "start_url": "/Notes",
   "display": "fullscreen",
   "orientation": "portrait"
 }
