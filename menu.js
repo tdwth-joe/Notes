@@ -1,3 +1,7 @@
+
+
+// Ensure the DOM content is fully loaded before accessing elements
+document.addEventListener('DOMContentLoaded', (event) => {
 // Function to create and display the menu overlay with fade-in animation
 function showMenuOverlay() {
     const chatDisplay = document.getElementById('chat-display');
@@ -46,3 +50,4 @@ function hideMenuOverlay() {
 
 // Event listener to show the menu on Menu button click
 document.getElementById('menu-button').addEventListener('click', showMenuOverlay);
+});
