@@ -135,8 +135,73 @@ function loadNotes() {
         });
     }
 }
+  
+//
+// MENU
+//
 
-// Load notes when DOM is fully loaded
+// Function to create and show the menu overlay
+// Function to create and show the menu overlay
+function showMenu() {
+    // Check if the menu is already visible and hide it if it is
+    const existingMenu = document.getElementById('menu-overlay');
+    if (existingMenu) {
+        hideMenu(existingMenu);
+        return;
+    }
+
+    const menu = document.createElement('div');
+    menu.id = 'menu-overlay';
+    menu.innerHTML = `
+        <div id="menu-content">
+            <h2>Menu</h2>
+            <ul>
+                <li>User Settings</li> 
+                <li>- Settings</li>
+                <li>o Settings</li>
+                <li>+ Settings</li>
+                <li id="clear-data">&#128465; Clear Data</li>
+            </ul>
+        </div>`;
+    menu.style.transform = 'translateY(100%)';
+    document.getElementById('chat-display').appendChild(menu);
+    setTimeout(() => {
+        menu.style.transform = 'translateY(0)';
+    }, 10);
+
+    // Event binding for clear data and hiding the menu
+    menu.addEventListener('click', (e) => {
+        if (e.target.id === 'clear-data') {
+            if (window.confirm('Are you sure you want to clear all data?')) {
+                localStorage.clear();
+                location.reload();
+            }
+        } else {
+            hideMenu(menu);
+        }
+    });
+
+    // Scroll the chat display to the bottom
+    const chatDisplay = document.getElementById('chat-display');
+    chatDisplay.scrollTop = chatDisplay.scrollHeight;
+}
+
+// Function to hide the menu overlay
+function hideMenu(menuElement) {
+    menuElement.style.transform = 'translateY(100%)';
+    setTimeout(() => {
+        menuElement.remove();
+    }, 300);
+}
+
+// Event listener for opening the menu
+document.getElementById('menu-button').addEventListener('click', showMenu);
+
+
+//
+// EMD
+//
+
 document.addEventListener('DOMContentLoaded', (event) => {
     loadNotes();
-});
+});  
