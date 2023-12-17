@@ -85,3 +85,20 @@ body {
 @media (min-device-width: 1440px) and (min-device-height: 3120px) and (-webkit-device-pixel-ratio: 3) {
   /* ... existing Pixel 8 Pro specific styles ... */
 }
+/* Styles for the menu overlay and animation */
+.menu-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-item {
+    cursor: pointer;
+    /* Add additional styles and icons as needed */
+}
