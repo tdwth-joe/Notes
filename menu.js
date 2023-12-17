@@ -48,6 +48,11 @@ function hideMenuOverlay() {
     }
 }
 
-// Event listener to show the menu on Menu button click
+const menuButton = document.getElementById('menu-button');
+if (menuButton) {
+    menuButton.addEventListener('click', showMenuOverlay);
+} else {
+    console.error("'menu-button' does not exist in the DOM.");
+}
 document.getElementById('menu-button').addEventListener('click', showMenuOverlay);
 });

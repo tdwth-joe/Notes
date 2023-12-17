@@ -136,4 +136,7 @@ function loadNotes() {
     }
 }
 
-window.onload = loadNotes;
+// Load notes when DOM is fully loaded
+document.addEventListener('DOMContentLoaded', (event) => {
+    loadNotes();
+});
