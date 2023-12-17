@@ -11,35 +11,32 @@ body {
   overflow-x: hidden; /* Prevent horizontal overflow */
   box-sizing: border-box;
 }
-.menu-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
-    z-index: 1000;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+
+#menu-overlay {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  transition: transform 0.5s ease;
 }
 
 .menu-item {
-    cursor: pointer;
+  cursor: pointer;
 }
+
 #chat-display {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   background-color: #fff;
   overflow-y: auto;
   margin: 10px;
   padding: 10px;
   border: 1px solid #ddd;
-  max-height: calc(100vh - 80px); /* Adjusted for input container and margins */
+  max-height: calc(100vh - 80px);
   font-size: 18px;
   user-select: none;
   box-sizing: border-box;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 
 .input-container {
@@ -52,7 +49,7 @@ body {
 #entry-box {
   flex-grow: 1;
   padding: 10px;
-  border: 2px solid #000; 
+  border: 2px solid #000;
   border-radius: 4px;
   background-color: #fff; /* Slightly off-white background */
   color: #000;
@@ -99,4 +96,3 @@ body {
 @media (min-device-width: 1440px) and (min-device-height: 3120px) and (-webkit-device-pixel-ratio: 3) {
   /* ... existing Pixel 8 Pro specific styles ... */
 }
-
