@@ -1,14 +1,8 @@
-//
-// STRING FUNCTIONS
-//
-
 function isPastTense(word) {
     return word.endsWith('ed') || word.endsWith('d');
 }
 
-function getSettings() {
-
-}
+function getSettings() {}
 
 function handleInputFocus() {
     const entryBox = document.getElementById('entry-box');
@@ -35,7 +29,7 @@ function modifyInputPrefix(prefix) {
 function toggleStyle(event) {
     const entry = event.target;
     const styleStates = ['normal', 'bold'];
-    
+
     let currentState = entry.getAttribute('data-style-state') || 'normal';
     let newStateIndex = (styleStates.indexOf(currentState) + 1) % styleStates.length;
     let newState = styleStates[newStateIndex];
@@ -59,7 +53,7 @@ function toggleStyle(event) {
     }
 
     entry.setAttribute('data-style-state', newState);
-    saveNotes(); // Save notes each time style is toggled
+    saveNotes();
 }
 
 function removeEntry(event) {
@@ -116,10 +110,6 @@ document.getElementById('entry-box').addEventListener('keypress', function (e) {
     }
 });
 
-//
-// DATA MANAGEMENT
-//
-
 function saveNotes() {
     const chatDisplay = document.getElementById('chat-display');
     const notes = Array.from(chatDisplay.children).map(entry => {
@@ -135,30 +125,25 @@ function saveNotes() {
 }
 
 function loadNotes() {
-  const chatDisplay = document.getElementById('chat-display');
-  const savedNotes = JSON.parse(localStorage.getItem('notes'));
+    const chatDisplay = document.getElementById('chat-display');
+    const savedNotes = JSON.parse(localStorage.getItem('notes'));
 
-  if (savedNotes) {
-    savedNotes.forEach(note => {
-      const newEntry = document.createElement('div');
-      newEntry.textContent = `${note.type} ${note.text}`;
+    if (savedNotes) {
+        savedNotes.forEach(note => {
+            const newEntry = document.createElement('div');
+            newEntry.textContent = `${note.type} ${note.text}`;
 
-      if (note.style.includes('bold')) {
-        newEntry.style.fontWeight = 'bold';
-      }
+            if (note.style.includes('bold')) {
+                newEntry.style.fontWeight = 'bold';
+            }
 
-      newEntry.onclick = toggleStyle;
-      newEntry.ondblclick = removeEntry;
+            newEntry.onclick = toggleStyle;
+            newEntry.ondblclick = removeEntry;
 
-      chatDisplay.appendChild(newEntry);
-    });
-  }
+            chatDisplay.appendChild(newEntry);
+        });
+    }
 }
-
-  
-//
-// MENU
-//
 
 function showMenu() {
     const existingMenu = document.getElementById('menu-overlay');
@@ -172,7 +157,7 @@ function showMenu() {
         <div id="menu-content">
             <h2>Menu</h2>
             <ul>
-                <li>User Settings</li> 
+                <li>User Settings</li>
                 <li>- Settings</li>
                 <li>o Settings</li>
                 <li>+ Settings</li>
@@ -197,19 +182,16 @@ function showMenu() {
     const chatDisplay = document.getElementById('chat-display');
     chatDisplay.scrollTop = chatDisplay.scrollHeight;
 }
+
 function hideMenu(menuElement) {
     menuElement.style.transform = 'translateY(100%)';
     setTimeout(() => {
         menuElement.remove();
     }, 300);
 }
+
 document.getElementById('menu-button').addEventListener('click', showMenu);
-
-
-//
-// EMD
-//
 
 document.addEventListener('DOMContentLoaded', (event) => {
     loadNotes();
-});  
+});
