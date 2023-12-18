@@ -1,5 +1,13 @@
+//
+// STRING FUNCTIONS
+//
+
 function isPastTense(word) {
     return word.endsWith('ed') || word.endsWith('d');
+}
+
+function getSettings() {
+
 }
 
 function handleInputFocus() {
@@ -64,15 +72,17 @@ let history = [];
 function addEntry() {
     const entryBox = document.getElementById('entry-box');
     let entryText = entryBox.value.trim();
-    if (!entryText) return;
+
+    if (!entryText) {
+        return;
+    }
 
     const specialPrefixes = ['+', 'o', '-'];
     let prefix = entryText[0];
 
-    // Check if the first character is not one of the special prefixes
     if (!specialPrefixes.includes(prefix)) {
-        prefix = '-';  // Set default prefix if not present
-        entryText = entryText;  // Use the full text without slicing
+        prefix = '-';
+        entryText = entryText;
     } else {
         entryText = entryText.slice(2).trim();
     }
@@ -82,14 +92,16 @@ function addEntry() {
     }
 
     history.push(entryText);
+
     const chatDisplay = document.getElementById('chat-display');
     const newEntry = document.createElement('div');
-    newEntry.textContent = prefix + ' ' + entryText;
+    newEntry.textContent = `${prefix} ${entryText}`;
     newEntry.onclick = toggleStyle;
     newEntry.ondblclick = removeEntry;
     chatDisplay.appendChild(newEntry);
     chatDisplay.scrollTop = chatDisplay.scrollHeight;
-    entryBox.value = prefix + ' ';
+
+    entryBox.value = `${prefix} `;
     saveNotes();
 }
 
@@ -104,6 +116,9 @@ document.getElementById('entry-box').addEventListener('keypress', function (e) {
     }
 });
 
+//
+// DATA MANAGEMENT
+//
 
 function saveNotes() {
     const chatDisplay = document.getElementById('chat-display');
@@ -120,36 +135,37 @@ function saveNotes() {
 }
 
 function loadNotes() {
-    const chatDisplay = document.getElementById('chat-display');
-    const savedNotes = JSON.parse(localStorage.getItem('notes'));
-    if (savedNotes) {
-        savedNotes.forEach(note => {
-            const newEntry = document.createElement('div');
-            newEntry.textContent = note.type + ' ' + note.text;
-            if (note.style.includes('bold')) {
-                newEntry.style.fontWeight = 'bold';
-            }
-            newEntry.onclick = toggleStyle;
-            newEntry.ondblclick = removeEntry; // Restore double-click functionality
-            chatDisplay.appendChild(newEntry);
-        });
-    }
+  const chatDisplay = document.getElementById('chat-display');
+  const savedNotes = JSON.parse(localStorage.getItem('notes'));
+
+  if (savedNotes) {
+    savedNotes.forEach(note => {
+      const newEntry = document.createElement('div');
+      newEntry.textContent = `${note.type} ${note.text}`;
+
+      if (note.style.includes('bold')) {
+        newEntry.style.fontWeight = 'bold';
+      }
+
+      newEntry.onclick = toggleStyle;
+      newEntry.ondblclick = removeEntry;
+
+      chatDisplay.appendChild(newEntry);
+    });
+  }
 }
+
   
 //
 // MENU
 //
 
-// Function to create and show the menu overlay
-// Function to create and show the menu overlay
 function showMenu() {
-    // Check if the menu is already visible and hide it if it is
     const existingMenu = document.getElementById('menu-overlay');
     if (existingMenu) {
         hideMenu(existingMenu);
         return;
     }
-
     const menu = document.createElement('div');
     menu.id = 'menu-overlay';
     menu.innerHTML = `
@@ -168,8 +184,6 @@ function showMenu() {
     setTimeout(() => {
         menu.style.transform = 'translateY(0)';
     }, 10);
-
-    // Event binding for clear data and hiding the menu
     menu.addEventListener('click', (e) => {
         if (e.target.id === 'clear-data') {
             if (window.confirm('Are you sure you want to clear all data?')) {
@@ -180,21 +194,15 @@ function showMenu() {
             hideMenu(menu);
         }
     });
-
-    // Scroll the chat display to the bottom
     const chatDisplay = document.getElementById('chat-display');
     chatDisplay.scrollTop = chatDisplay.scrollHeight;
 }
-
-// Function to hide the menu overlay
 function hideMenu(menuElement) {
     menuElement.style.transform = 'translateY(100%)';
     setTimeout(() => {
         menuElement.remove();
     }, 300);
 }
-
-// Event listener for opening the menu
 document.getElementById('menu-button').addEventListener('click', showMenu);
 
 
