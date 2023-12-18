@@ -1,3 +1,7 @@
+///
+/// STRING FUNCTIONS
+///
+
 function isPastTense(word) {
     return word.endsWith('ed') || word.endsWith('d');
 }
@@ -110,6 +114,10 @@ document.getElementById('entry-box').addEventListener('keypress', function (e) {
     }
 });
 
+///
+/// DATA MANAGEMENT
+///
+
 function saveNotes() {
     const chatDisplay = document.getElementById('chat-display');
     const notes = Array.from(chatDisplay.children).map(entry => {
@@ -144,6 +152,10 @@ function loadNotes() {
         });
     }
 }
+
+///
+/// MENU
+///
 
 function showMenu() {
     const existingMenu = document.getElementById('menu-overlay');
@@ -191,6 +203,10 @@ function hideMenu(menuElement) {
 }
 
 document.getElementById('menu-button').addEventListener('click', showMenu);
+
+///
+/// INITIALIZATION
+///
 
 document.addEventListener('DOMContentLoaded', (event) => {
     loadNotes();
