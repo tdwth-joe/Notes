@@ -1,9 +1,6 @@
-I often find myself without my journal these days, and i pretty much loath modern flashy note taking interfaces with their modern designs and modern layouts 🤮. All joking aside. I simply wanted a nice minimalst app that all it does is take plain text format notes. and quick to pop open and just take notes wherever I’m at.
-
-mini jot (jotty, jots, jotter, name pending, etc) is a shorthand note system that is meant for jotting down things throughout your day, inspired by bullet journal and atomic habits. It’s simple monotone minimalist interface is easily approachable for anyone to use.
+I often find myself without my journal these days, and i pretty much loath modern flashy note taking interfaces with their modern designs and modern layouts 🤮. All joking aside. I simply wanted a nice minimalst app that helps you log plain text notes.
 
 <aside>
-🔲 mini jot
 
 ---
 
